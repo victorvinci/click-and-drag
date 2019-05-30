@@ -24,8 +24,35 @@ slider.addEventListener('mouseup', () => {
 slider.addEventListener('mousemove', (e) => {
   if(!isDown) return; //stop function
   e.preventDefault();
-  e.target.click();
   const x = e.pageX - slider.offsetLeft;
-  const moveX = x - startX;
+  const moveX = (x - startX) * 2;
+  slider.scrollLeft = scrollLeft - moveX;
+});
+
+
+//TOUCH
+slider.addEventListener('touchstart', (e) => {
+  e.preventDefault();
+  isDown = true;
+  slider.classList.add('active');
+  startX = e.targetTouches[0].pageX - e.target.offsetLeft;
+  scrollLeft = slider.scrollLeft;
+});
+
+slider.addEventListener('touchleave', () => {
+  isDown = false;
+  slider.classList.remove('active');
+});
+
+slider.addEventListener('touchend', () => {
+  isDown = false;
+  slider.classList.remove('active');
+});
+
+slider.addEventListener('touchmove', (e) => {
+  if(!isDown) return; //stop function
+  e.preventDefault();
+  const x = e.targetTouches[0].pageX - e.target.offsetLeft;
+  const moveX = (x - startX);
   slider.scrollLeft = scrollLeft - moveX;
 });
