@@ -20,9 +20,9 @@ body {
 }
 
 .items {
-  height: 800px;
+  height: 100vh;
   padding: 100px;
-  width: 100%;
+  width: 100vw;
   border: 1px solid white;
   overflow-x: scroll;
   overflow-y: hidden;
@@ -37,6 +37,7 @@ body {
   font-size: 0;
   perspective: 500px;
   scroll-behavior: smooth;
+  overflow: hidden;
 }
 
 .items.active {
